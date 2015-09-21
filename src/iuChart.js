@@ -35,6 +35,10 @@ angular.module('iu',[])
             initializeApi();
             option.onRegisterApi(api);
           }
+          
+          if (angular.isFunction(option.onMapSelected)) {
+            chart.on('mapSelected', option.onMapSelected);
+          }
 
           if(angular.isDefined(scope.iuChart.version)){
             watch = scope.$watch('iuChart.version',function(newValue,oldValue){
